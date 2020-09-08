@@ -1,0 +1,247 @@
+#include<GL/gl.h>
+#include<GL/glut.h>       // GLUT, include glu.h and gl.h
+//Note: GLglut.h path depending on the system in use
+void init()
+{
+    // Set display window color to as glClearColor(R,G,B,Alpha)
+    glClearColor(0.5, 0.9, 0.4, 0.0);
+    // Set projection parameters.
+    glMatrixMode(GL_PROJECTION);
+    // Set 2D Transformation as gluOrtho2D(Min Width, Max Width, Min Height, Max Height)
+    gluOrtho2D(0.0, 800, 0.0, 600);
+}
+void home()
+{ 
+    glClear(GL_COLOR_BUFFER_BIT);
+    //sky
+    glColor3f(0.3, 0.3, 1);
+    glBegin(GL_POLYGON);
+    glVertex2i(0, 600);
+    glVertex2i(800,600);
+    glVertex2i(800,400);
+    glVertex2i(0,400);
+    glEnd();
+    //birds
+    glColor3f(0, 0, 0);
+    glLineWidth(5);
+    glBegin(GL_LINES);
+    glVertex2i(210, 590);
+    glVertex2i(230, 550);
+    glVertex2i(230, 550);
+    glVertex2i(250, 590);
+    glVertex2i(270, 540);
+    glVertex2i(280, 500);
+    glVertex2i(280, 500);
+    glVertex2i(290, 540);
+    glVertex2i(360, 590);
+    glVertex2i(380, 550);
+    glVertex2i(380, 550);
+    glVertex2i(400, 600);
+    glEnd();
+
+    //MOUNTAIN
+    glColor3f(0.6,0.1,0.1);
+    glBegin(GL_TRIANGLES);
+    glVertex2i(150,600);
+    glVertex2i(300,400);
+    glVertex2i(0,400);
+    glEnd();
+    glColor3f(1,1,1);
+    glBegin(GL_TRIANGLES);
+    glVertex2i(150,600);
+    glVertex2i(190,550);
+    glVertex2i(110,550);
+    glEnd();
+    glColor3f(0.6,0.1,0.1);
+    glBegin(GL_TRIANGLES);
+    glVertex2i(450,600);
+    glVertex2i(600,400);
+    glVertex2i(300,400);
+    glEnd();
+    glColor3f(1,1,1);
+    glBegin(GL_TRIANGLES);
+    glVertex2i(450,600);
+    glVertex2i(490,550);
+    glVertex2i(410,550);
+    glEnd();
+    //sun
+    glColor3f(1,1,0);
+    glBegin(GL_TRIANGLES);
+    glVertex2i(300,400);
+    glVertex2i(225,500);
+    glVertex2i(375,500);
+    glEnd(); 
+     //Roof
+    glColor3f(0.8,0.1,0.6);
+    glBegin(GL_POLYGON);
+    glVertex2i(100,200);
+    glVertex2i(300,200);
+    glVertex2i(350,100);
+    glVertex2i(150,100);
+    glEnd();
+    // Top of Front Wall
+    glColor3f(0.5, 0.1, 0.1);
+    glBegin(GL_TRIANGLES);
+    glVertex2i(100,200);
+    glVertex2i(150,100);
+    glVertex2i(50,100);
+    glEnd();
+    // Front Wall
+    glColor3f(0.2, 0.2, 0.4);
+    glBegin(GL_POLYGON);
+    glVertex2i(50, 100);
+    glVertex2i(150, 100);
+    glVertex2i(150, 0);
+    glVertex2i(50, 0);
+    glEnd();
+    // Front Door
+    glColor3f(0.7, 0.2, 0.9);
+    glBegin(GL_POLYGON);
+    glVertex2i(75, 75);
+    glVertex2i(125,75);
+    glVertex2i(125, 0);
+    glVertex2i(75, 0);
+    glEnd();
+
+    // Front Door Lock
+    glColor3f(0.3, 0.7, 0.9);
+    glPointSize(5);
+    glBegin(GL_POINTS);
+    glVertex2i(95, 45);
+    glEnd();
+
+    //side Wall
+    glColor3f(0.8,0.5,0.1);
+    glBegin(GL_POLYGON);
+    glVertex2i(150,100);
+    glVertex2i(350,100);
+    glVertex2i(350,0);
+    glVertex2i(150,0);
+    glEnd();
+
+    // window one
+    glColor3f(0.2, 0.4, 0.3);
+    glPointSize(35);
+    glBegin(GL_POINTS);
+    glVertex2i(200,50);
+    glEnd();
+    
+    // window two
+    glColor3f(0.2, 0.4, 0.3);
+    glPointSize(35);
+    glBegin(GL_POINTS);
+    glVertex2i(300,50);
+    glEnd();
+
+    // Entrance Path
+    /*glColor3f(0.3, 0.5, 0.7);
+    glLineWidth(3);
+    glBegin(GL_POLYGON);
+    glVertex2i(150, 100);
+    glVertex2i(250, 100);
+    glVertex2i(210, 0);
+    glVertex2i(40, 0);
+    glEnd();*/
+
+    // Process all OpenGL routine s as quickly as possible
+    glColor3f(0.3, 0.3, 0.1);
+
+    glLineWidth(10);
+    glBegin(GL_LINES);
+    glVertex2i(450, 320);
+    glVertex2i(450, 230);
+    glVertex2i(390, 320);
+    glVertex2i(390, 230);
+    glVertex2i(330, 320);
+    glVertex2i(330, 230);
+    glVertex2i(270, 320);
+    glVertex2i(270, 230);
+    glVertex2i(210, 320);
+    glVertex2i(210, 230);
+    glVertex2i(150, 320);
+    glVertex2i(150, 230);
+    glVertex2i(90, 320);
+    glVertex2i(90, 230);
+    glVertex2i(30, 320);
+    glVertex2i(30, 230);
+    glVertex2i(0, 273);
+    glVertex2i(450, 273);
+    glEnd();
+
+    //Tree
+    glColor3f(0.1,0.3,0.1);
+    glLineWidth(20);
+    glBegin(GL_LINES);
+    glVertex2i(440, 210);
+    glVertex2i(760, 210);
+    glVertex2i(470, 230);
+    glVertex2i(730, 230);
+    glVertex2i(500, 250);
+    glVertex2i(700, 250);
+    glVertex2i(530, 270);
+    glVertex2i(670, 270);
+    glVertex2i(560, 290);
+    glVertex2i(630, 290);
+    glVertex2i(580, 310);
+    glVertex2i(610, 310);
+    glEnd();
+
+    //Tree trunk
+    glColor3f(0.35,0.16,0.14);
+    glLineWidth(30);
+    glBegin(GL_LINES);
+    glVertex2i(600, 200);
+    glVertex2i(600, 100);
+    glEnd();
+
+    //pond
+    glColor3f(0,0,0.8);
+    glBegin(GL_TRIANGLE_STRIP);
+    glVertex2i(450,80); 
+    glVertex2i(560,103);
+    glVertex2i(560,10);
+    glVertex2i(620,103);
+    glVertex2i(595,0);
+    glVertex2i(680,60);
+    //glVertex2i(600,,55);
+    glEnd();
+
+    //Name
+    glColor3f(1,1,1);
+    glRasterPos2f(610,500);
+    glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_24,"ARATHI S");
+    glFlush();
+}
+//Change grass color
+void onclick(int button, int state , int x, int y)
+{ if(button == GLUT_LEFT_BUTTON && state == GLUT_UP)
+  { glClearColor(0.1,0.5,0.4,1);
+    glutPostRedisplay();
+  }
+}
+void onit(unsigned char key, int x, int y)
+{ if(key=='x')
+    { exit(1); }
+}
+int main(int argc, char ** argv)
+{
+    // Initialize GLUT
+    glutInit(&argc, argv);
+    // Set display mode
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    // Set top - left display window position.
+    glutInitWindowPosition(100, 100);
+    // Set display window width and height
+    glutInitWindowSize(800, 600);
+    // Create display window with the given title
+    glutCreateWindow("2D House in OpenGL ");
+    // Execute initialization procedure
+    init();
+    // Send graphics to display window
+    glutDisplayFunc(home);
+    // Display everything and wait.
+    glutMouseFunc(onclick);
+    glutKeyboardFunc(onit);
+    glutMainLoop();
+}
+
