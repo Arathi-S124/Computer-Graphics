@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <math.h>
+#include <time.h>
+#include <GL/glut.h>
+#include <GL/gl.h>
+float a2,b2,c2;
+void init(){
+    glClearColor(1.0,1.0,1.0,0.0);
+    glMatrixMode(GL_PROJECTION);
+    gluOrtho2D(0,640,0,480);
+}
+
+void boundary(int x, int y, float* fillColor, float* bcol){
+    float color[3];
+    glReadPixels(x,y,1.0,1.0,GL_RGB,GL_FLOAT,color);
+    if((color[0]!=bcol[0] || color[1]!=bcol[1] || color[2]!=bcol[2])&&(
+     color[0]!=fillColor[0] || color[1]!=fillColor[1] || color[2]!=fillColor[2])){
+        glColor3f(fillColor[0],fillColor[1],fillColor[2]);
+        glBegin(GL_POINTS);
+            glVertex2i(x,y);
+        glEnd();
+        glFlush();
+        boundary(x+1,y,fillColor,bcol);
+        boundary(x-1,y,fillColor,bcol);
+        boundary(x,y+1,fillColor,bcol);
+        boundary(x,y-1,fillColor,bcol);
+    }
+}
+
+void mouse(int btn, int state, int x, int y){
+    y = 480-y;
+    if(btn==GLUT_LEFT_BUTTON)
+    {
+        if(state==GLUT_DOWN)
+        {   float bCol[] = {0,0,0};
+            float color[] = {a2,b2,c2};
+            boundary(x,y,color,bCol);
+        }
+    }
+}
+
+void world(){
+    glLineWidth(3);
+    glPointSize(2);
+    glClear(GL_COLOR_BUFFER_BIT);
+    glColor3f(0,0,0);
+    glBegin(GL_LINE_LOOP);
+        glVertex2i(150,100);
+        glVertex2i(150,300);
+        glVertex2i(450,300);
+        glVertex2i(450,100);
+    glEnd();
+    glFlush();
+}
+
+int main(int argc, char** argv){
+    printf("Enter RGB values for filling colour= ");
+    scanf("%f%f%f",&a2,&b2,&c2);
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
+    glutInitWindowSize(640,480);
+    glutInitWindowPosition(200,200);
+    glutCreateWindow("7.1 Boundary Fill");
+    glutDisplayFunc(world);
+    glutMouseFunc(mouse);
+    init();
+    glutMainLoop();
+    return 0;
+}
+
